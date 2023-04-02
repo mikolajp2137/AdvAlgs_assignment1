@@ -1,12 +1,6 @@
 import re
 
 def wildSundaySearch(pattern, text):
-    """
-    Returns all occurrences of the pattern in the text using Sunday's algorithm with support for wildcards.
-    :param pattern: the pattern to search for
-    :param text: the text to search in
-    :return: a list of starting indices of all occurrences of the pattern in the text
-    """
     m = len(pattern)
     n = len(text)
     indices = []
@@ -26,5 +20,6 @@ def wildSundaySearch(pattern, text):
             i += skip_table[text[i + m]]
         else:
             i += m + 1
-    pattern = r'{}\b'.format(pattern.replace('?', r'\S'))
+    pattern = pattern.replace('*', '\S*').replace('?', r'\S')
+    pattern = r'{}\b'.format(pattern)
     return [m.start() for m in re.finditer(pattern, text)]
