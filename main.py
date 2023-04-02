@@ -1,10 +1,13 @@
-import Sunday
-import RabinKarp
+from Algorithms import RabinKarp, Sunday, SundayWildcards
 
-with open('raven.txt', encoding='utf8') as f:
+with open('poison.txt', encoding='utf8') as f:
     poem = f.read().replace('\n', ' ')
 
-pattern = "Raven"
+patternWild = "wrat?"
+pattern = "wrath"
+
+wildSundayResults = SundayWildcards.wildSundaySearch(patternWild, poem)
+print(wildSundayResults)
 
 print(Sunday.sundaySearch(pattern, poem))
 print(RabinKarp.rabinKarp(pattern, poem))
