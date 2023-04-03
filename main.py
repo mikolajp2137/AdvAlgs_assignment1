@@ -1,13 +1,20 @@
-from Algorithms import RabinKarp, Sunday, SundayWildcards
+from Algorithms import RabinKarp, Sunday, SundayWildcards, WildNaive
 
 with open('poison.txt', encoding='utf8') as f:
     poem = f.read().replace('\n', ' ')
 
-patternWild = "I was angry"
-pattern = "I was angry"
+patternWild = "wrath"
+pattern = "wrath"
 
 wildSundayResults = SundayWildcards.wildSundaySearch(patternWild, poem)
+print("Sunday with wildcards: ")
 print(wildSundayResults)
 
+print("Sunday: ")
 print(Sunday.sundaySearch(pattern, poem))
+
+print("Rabin-Karp: ")
 print(RabinKarp.rabinKarp(pattern, poem))
+
+print("Naive/Bruteforce: ")
+print(WildNaive.brute_force(poem,pattern))
